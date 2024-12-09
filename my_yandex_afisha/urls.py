@@ -20,5 +20,5 @@ from my_yandex_afisha import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home_page),
+    path('', views.index),
 ]
