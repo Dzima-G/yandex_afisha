@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Place(models.Model):
     title = models.CharField(max_length=200)
     description_short = models.TextField()
@@ -10,10 +11,18 @@ class Place(models.Model):
     def __str__(self):
         return self.title
 
+
 class Image(models.Model):
     place = models.ForeignKey('Place', on_delete=models.CASCADE, verbose_name='Место')
-    geeks_field = models.PositiveIntegerField(verbose_name='Позиция')
+    geeks_field = models.PositiveIntegerField(db_index=True,
+                                              default=0,
+                                              blank=False,
+                                              null=False,
+                                              verbose_name='Позиция')
     image = models.ImageField('Картинка')
+
+    class Meta:
+        ordering = ['geeks_field']
 
     def __str__(self):
         return f'{self.geeks_field} {self.place.title}'
