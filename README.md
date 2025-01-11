@@ -33,7 +33,7 @@
 Пример сайта можно посмотреть по ссылке: https://dzima.pythonanywhere.com/
 
 **Добавление новых мест с помощью GeoJSON:**
-- требуется файл формата json (GeoJSON) см. https://ru.wikipedia.org/wiki/GeoJSON
+- требуется файл формата json (GeoJSON) см. https://ru.wikipedia.org/wiki/GeoJSON (образец sample place.json)
 - для запуска добавления места: `python3 manage.py load_place URL` (URL - ссылка на файл GeoJSON)
 
 
