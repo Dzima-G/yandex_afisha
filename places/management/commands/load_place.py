@@ -25,13 +25,15 @@ class Command(BaseCommand):
             return path.rstrip("/").split("/")[-1]
 
         def add_place(geo_json):
-            Place.objects.get_or_create(
+           Place.objects.get_or_create(
                 title=geo_json.get('title'),
                 description_short=geo_json.get('description_short'),
                 description_long=geo_json.get('description_long'),
                 lat=geo_json.get('coordinates').get('lng'),
                 lng=geo_json.get('coordinates').get('lat'),
             )
+
+
         def add_image(geo_json, place):
             for number, uri in enumerate(geo_json.get('imgs'), 1):
                 photo = get_response(uri)
@@ -43,11 +45,12 @@ class Command(BaseCommand):
         try:
             response = get_response(url).json()
 
-            add_place(response)
-
-            place = Place.objects.get(title=response.get('title'))
-
-            add_image(response, place)
+            if add_place(response):
+                place = Place.objects.get(title=response.get('title'))
+                add_image(response, place)
+            else:
+                print(f'ВНИМАНИЕ!!! Место "{response.get('title')}" уже добавлено!!! Повторное добавление невозможно!')
 
         except requests.exceptions.HTTPError as error:
             print(error, file=sys.stderr)
+
