@@ -9,7 +9,7 @@
 - Скачайте код
 - Установите зависимости командой `pip install -r requirements.txt`
 - Запустите сервер командой `python3 manage.py runserver`
-- 
+
 
 После этого переходите по ссылке [127.0.0.1:8000](http://127.0.0.1:8000), вы увидите главную страницу.
 
@@ -30,6 +30,11 @@
 - `MEDIA_URL` — по умолчанию это `'/media/'`. [Что такое MEDIA_URL](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_URL).
 - `MEDIA_ROOT` — по умолчанию это `'media'`. [Что такое MEDIA_ROOT](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_ROOT).
 
+Пример сайта можно посмотреть по ссылке: https://dzima.pythonanywhere.com/
+
+**Добавление новых мест с помощью GeoJSON:**
+- требуется файл формата json (GeoJSON) см. https://ru.wikipedia.org/wiki/GeoJSON
+- для запуска добавления места: `python3 manage.py load_place URL` (URL - ссылка на файл GeoJSON)
 
 
 ## Цели проекта

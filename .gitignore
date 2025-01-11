@@ -2,3 +2,4 @@
 /.venv/
 /TinyMCE.txt
 /.env
+/static_file/
