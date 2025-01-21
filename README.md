@@ -4,15 +4,23 @@
 
 ## Запуск
 
-Для запуска у вас уже должен быть установлен Python 3.
+Для запуска у вас уже должен быть установлен Python 3.13
 
 - Скачайте код
-- Установите зависимости командой `pip install -r requirements.txt`
-- Запустите сервер командой `python3 manage.py runserver`
-
+- Виртуальное окружение (команды выполняются в терминале):  
+  - Создайте виртуальное окружение `python -m venv C:\path\MyProject\venv` - заменить путь на фактический к проекту (см. документацию https://docs.python.org/3/library/venv.html)  
+  - Активируйте виртуально окружение из папки вашего проекта `venv\Scripts\activate` Пример: `PS C:\path\MyProject> venv\Scripts\activate`
+- Установите зависимости командой `pip install -r requirements.txt` (проверка установленных зависимостей командой  `pip freeze`)
+- Создайте базу данных `python manage.py makemigrations`
+- Выполните миграцию `python manage.py migrate`
+- Запустите сервер командой `python manage.py runserver`
 
 После этого переходите по ссылке [127.0.0.1:8000](http://127.0.0.1:8000), вы увидите главную страницу.
 
+Для входа в панель администратора:
+
+- Создание суперпользователя `python manage.py createsuperuser`
+- Запустите сервер командой `python manage.py runserver`
 Переходите по ссылке [127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/), вы увидите вход в панель администратора.
 
 ## Переменные окружения
@@ -33,10 +41,11 @@
 Пример сайта можно посмотреть по ссылке: https://dzima.pythonanywhere.com/
 
 **Добавление новых мест с помощью GeoJSON:**
-- требуется файл формата json (GeoJSON) см. https://ru.wikipedia.org/wiki/GeoJSON (образец sample place.json)
-- для запуска добавления места: `python3 manage.py load_place URL` (URL - ссылка на файл GeoJSON)
+- требуется файл формата json (GeoJSON) см. https://ru.wikipedia.org/wiki/GeoJSON (образец [sample place.json](https://github.com/Dzima-G/yandex_afisha/blob/main/sample%20place.json))
+- для запуска добавления места: `python manage.py load_place URL` (URL - ссылка на файл GeoJSON)  
 
-
+Пример запуска:
+`python manage.py load_place https://raw.githubusercontent.com/Dzima-G/yandex_afisha/refs/heads/main/static/places/moscow_legends.json`
 ## Цели проекта
 
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org).
