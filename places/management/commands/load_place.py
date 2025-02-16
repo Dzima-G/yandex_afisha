@@ -1,9 +1,11 @@
-from django.core.management.base import BaseCommand
-from django.core.files.base import ContentFile
-from places.models import Place, Image
-import requests
 import sys
 from urllib.parse import urlparse
+
+import requests
+from django.core.files.base import ContentFile
+from django.core.management.base import BaseCommand
+
+from places.models import Image, Place
 
 
 class Command(BaseCommand):
@@ -44,13 +46,8 @@ class Command(BaseCommand):
 
         try:
             response = get_response(url).json()
-
-            if add_place(response):
-                place = Place.objects.get(title=response.get('title'))
-                add_image(response, place)
-            else:
-                print(f'ВНИМАНИЕ!!! Место "{response.get('title')}" уже добавлено!!! Повторное добавление невозможно!')
-
+            add_place(response)
+            place = Place.objects.get(title=response.get('title'))
+            add_image(response, place)
         except requests.exceptions.HTTPError as error:
             print(error, file=sys.stderr)
-

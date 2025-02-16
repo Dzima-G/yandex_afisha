@@ -1,9 +1,9 @@
+from adminsortable2.admin import SortableAdminBase, SortableTabularInline
 from django.contrib import admin
-from .models import Place, Image
-from django.utils.safestring import mark_safe
 from django.utils.html import format_html
-from adminsortable2.admin import SortableTabularInline
-from adminsortable2.admin import SortableAdminBase
+from django.utils.safestring import mark_safe
+
+from .models import Image, Place
 
 admin.site.register(Image)
 

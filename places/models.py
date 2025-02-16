@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce import models as tinymce_models
 
+
 class Place(models.Model):
     title = models.CharField(max_length=200, unique=True)
     description_short = models.TextField()
