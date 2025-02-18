@@ -11,7 +11,7 @@ admin.site.register(Image)
 class ImageInline(SortableTabularInline, admin.TabularInline):
     model = Image
     readonly_fields = ["preview"]
-    fields = ('image', 'preview', 'geeks_field')
+    fields = ('image', 'preview', 'position')
 
     def preview(self, obj):
         return format_html("<a>{}</a>",
@@ -19,15 +19,13 @@ class ImageInline(SortableTabularInline, admin.TabularInline):
                            )
 
     def get_extra(self, request, obj=None, **kwargs):
-        if obj:
-            return 0
-        else:
-            return 1
+
+        return 1
 
 
 @admin.register(Place)
 class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
-    fields = ('title', 'description_short', 'description_long', 'lng', 'lat')
+    fields = ('title', 'short_description', 'long_description', 'lng', 'lat')
     inlines = [
         ImageInline,
     ]
