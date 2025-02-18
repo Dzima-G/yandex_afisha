@@ -5,8 +5,10 @@ from django.utils.safestring import mark_safe
 
 from .models import Image, Place
 
-admin.site.register(Image)
 
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    raw_id_fields = ('place',)
 
 class ImageInline(SortableTabularInline, admin.TabularInline):
     model = Image
@@ -15,7 +17,7 @@ class ImageInline(SortableTabularInline, admin.TabularInline):
 
     def preview(self, obj):
         return format_html("<a>{}</a>",
-                           mark_safe(f'<img src="{obj.image.url}" style="max-height: 200px;">')
+                           mark_safe(f'<img src="{obj.image.url}" style="max-height: 200px; max-width: 200px;">')
                            )
 
     def get_extra(self, request, obj=None, **kwargs):
