@@ -11,7 +11,6 @@
   - Создайте виртуальное окружение `python -m venv C:\path\MyProject\venv` - заменить путь на фактический к проекту (см. документацию https://docs.python.org/3/library/venv.html)  
   - Активируйте виртуально окружение из папки вашего проекта `venv\Scripts\activate` Пример: `PS C:\path\MyProject> venv\Scripts\activate`
 - Установите зависимости командой `pip install -r requirements.txt` (проверка установленных зависимостей командой  `pip freeze`)
-- Создайте базу данных `python manage.py makemigrations`
 - Выполните миграцию `python manage.py migrate`
 - Запустите сервер командой `python manage.py runserver`
 
@@ -36,10 +35,6 @@
 Доступны следущие переменные:
 - `DEBUG` — дебаг-режим. Поставьте `True`, чтобы увидеть отладочную информацию в случае ошибки. Выключается значением `False`.
 - `ALLOWED_HOSTS` — см [документацию Django](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts).
-- `STATIC_URL` — по умолчанию это `'/static/'`, URL-адрес к статическим файлам. [Что такое STATIC_URL](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-STATIC_URL).
-- `STATIC_ROOT` — по умолчанию это `'None'`, путь к каталогу, где хранятся статические файлы. [Что такое STATIC_ROOT](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-STATIC_ROOT).
-- `MEDIA_URL` — по умолчанию это `'/media/'`, URL-адрес к загруженным файлам. [Что такое MEDIA_URL](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_URL).
-- `MEDIA_ROOT` — по умолчанию это `'media'`, путь к каталогу, в котором хранятся загруженные файлы. [Что такое MEDIA_ROOT](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_ROOT).
 
 Пример сайта можно посмотреть по ссылке: https://dzima.pythonanywhere.com/
 
