@@ -10,15 +10,18 @@ from .models import Image, Place
 class ImageAdmin(admin.ModelAdmin):
     raw_id_fields = ('place',)
 
+
 class ImageInline(SortableTabularInline, admin.TabularInline):
     model = Image
-    readonly_fields = ["preview"]
+    readonly_fields = ['preview']
     fields = ('image', 'preview', 'position')
 
     def preview(self, obj):
-        return format_html("<a>{}</a>",
-                           mark_safe(f'<img src="{obj.image.url}" style="max-height: 200px; max-width: 200px;">')
-                           )
+        return format_html(
+            '<a>{}</a>',
+            mark_safe(
+                f'<img src="{obj.image.url}"'
+                f' style="max-height: 200px; max-width: 200px;">'))
 
     def get_extra(self, request, obj=None, **kwargs):
 
