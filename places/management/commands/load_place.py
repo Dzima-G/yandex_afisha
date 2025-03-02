@@ -44,8 +44,8 @@ class Command(BaseCommand):
                 }
             )
 
-            # if not created:
-            #     sys.exit('The place has already been added earlier!')
+            if not created:
+                sys.exit('The place has already been added earlier!')
 
             return place
 
